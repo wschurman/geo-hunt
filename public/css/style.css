@@ -1,0 +1,19 @@
+body {
+  margin-top: 30px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+#map img {
+  max-width: none;
+}

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  - if (err)
+    .alert.alert-error
+      button(type="button", data-dismiss="alert").close &times;
+      <strong>Invalid Secret!</strong> Please try again.
+  form(method="post", action="/login").form-inline#login-form
+    legend Welcome
+    input(name="hname", type="text", placeholder="secret key...")#hname.input-medium
+    button(type="submit").btn.btn-primary Submit
+

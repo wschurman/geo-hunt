@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  - if (clue.type == 0)
+    script!= javascript
+    script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true")
+    script(src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/geolocationmarker/src/geolocationmarker-compiled.js")
+    script(src="/js/script.js")
+
+    #map
+  - else
+    - if (err)
+      .alert.alert-error
+        button(type="button", data-dismiss="alert").close &times;
+        <strong>Invalid Answer!</strong> Please try again.
+    h3 Next Clue
+    form(method="post", action="/clue").form-inline#clue-form
+      legend= clue.question
+      input(name="ans", type="text", placeholder="answer...")#ans.input-medium
+      button(type="submit").btn.btn-primary Submit
+    a(href="/logout").btn.btn-info logout
