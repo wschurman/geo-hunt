@@ -5,16 +5,21 @@ block content
     script!= javascript
     script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true")
     script(src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/geolocationmarker/src/geolocationmarker-compiled.js")
-    script(src="/js/script.js")
+    script(src="/js/script_map.js")
 
+    h4.map-title= clue.title
     #map
   - else
+    script(src="/js/script_question.js")
     - if (err)
       .alert.alert-error
         button(type="button", data-dismiss="alert").close &times;
         <strong>Invalid Answer!</strong> Please try again.
+    h2= clue.title
     form(method="post", action="/clue").form-inline#clue-form
       legend= clue.question
       input(name="ans", type="text", placeholder="answer...")#ans.input-medium
       button(type="submit").btn.btn-primary Submit
     a(href="/logout").btn.btn-info logout
+    &nbsp;
+    a(href="/reset")#resetBtn.btn.btn-danger reset

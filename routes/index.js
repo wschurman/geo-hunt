@@ -6,6 +6,10 @@ exports.index = function(req, res) {
   res.redirect('/clue');
 };
 
+exports.help = function(req, res) {
+  res.render('help');
+}
+
 exports.login = function(req, res) {
   res.render('login', {
     err: req.query['err']

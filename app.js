@@ -46,7 +46,9 @@ app.configure('development', function(){
 
 app.get('/', routes.index); // redirects to clue
 app.get('/login', routes.login);
+app.get('/help', routes.help);
 app.get('/logout', session_utils.logout_handler);
+app.get('/reset', session_utils.verify, hunt_utils.reset_handler);
 app.get('/clue', session_utils.verify, hunt_utils.get_handler, routes.clue);
 
 app.post('/login', session_utils.login_handler);

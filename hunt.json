@@ -1,0 +1,23 @@
+{
+  "test" : [
+    {
+      "title" : "test question",
+      "type" : 1,
+      "question" : "Huh?",
+      "answers" : ["yes", "y"]
+    },
+    {
+      "title" : "Where is the end of the world?",
+      "type" : 0,
+      "lat" : 40.445575,
+      "lng" : -76.489153,
+      "thresh" : 0.001
+    },
+    {
+      "title" : "last clue",
+      "type" : 1,
+      "question" : "you are done",
+      "answers" : ["j2i2jf9wf7qf7fh"]
+    }
+  ]
+}
