@@ -24,13 +24,12 @@ var queryPosition = function() {
         lng: lng_0
       }
     }).done(function(resp) {
-      console.log("close enough");
       window.location.reload();
     }).fail(function(jqXHR, textStatus) {
-      console.log("not close enough");
+      console.log("POST /clue", "not close enough");
     });
   } else {
-    console.log("Failed client js euclidian");
+    console.log("Client not within outer threshold, no post sent");
   }
 };
 

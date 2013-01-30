@@ -46,11 +46,10 @@ app.configure('development', function(){
 
 app.get('/', routes.index); // redirects to clue
 app.get('/login', routes.login);
-app.post('/login', session_utils.login_handler);
 app.get('/logout', session_utils.logout_handler);
-
-// must be logged in
 app.get('/clue', session_utils.verify, hunt_utils.get_handler, routes.clue);
+
+app.post('/login', session_utils.login_handler);
 app.post('/clue', session_utils.verify, hunt_utils.post_handler);
 
 http.createServer(app).listen(app.get('port'), function(){

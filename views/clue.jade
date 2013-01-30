@@ -13,7 +13,6 @@ block content
       .alert.alert-error
         button(type="button", data-dismiss="alert").close &times;
         <strong>Invalid Answer!</strong> Please try again.
-    h3 Next Clue
     form(method="post", action="/clue").form-inline#clue-form
       legend= clue.question
       input(name="ans", type="text", placeholder="answer...")#ans.input-medium
