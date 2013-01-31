@@ -10,6 +10,10 @@ var euclidean = function(lat_0, lng_0, lat_1, lng_1) {
 }
 
 var queryPosition = function() {
+  if (!GeoMarker.getPosition()) {
+    return false;
+  }
+
   var lat_0 = GeoMarker.getPosition().lat()
     , lng_0 = GeoMarker.getPosition().lng()
     , lat_1 = clueLatlng.lat()
@@ -54,14 +58,18 @@ var initialize = function() {
   GeoMarker = new GeolocationMarker();
   GeoMarker.setCircleOptions({fillColor: '#808080'});
 
+  var n_changes = 0;
+
   google.maps.event.addListener(GeoMarker, 'position_changed', function() {
-    if (!bounds) {
+    if (!bounds || n_changes % 10 == 0) {
       map.setCenter(this.getPosition());
       bounds = new google.maps.LatLngBounds();
       bounds.extend(clueLatlng);
       bounds.union(this.getBounds());
 
       map.fitBounds(bounds);
+
+      n_changes += 1;
     }
 
     queryPosition();
