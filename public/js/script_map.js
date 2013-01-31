@@ -41,7 +41,7 @@ var initialize = function() {
   };
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-  var bounds = new google.maps.LatLngBounds();
+  var bounds = null;
 
   clueLatlng = new google.maps.LatLng(hunt.clue.lat, hunt.clue.lng);
 
@@ -55,13 +55,14 @@ var initialize = function() {
   GeoMarker.setCircleOptions({fillColor: '#808080'});
 
   google.maps.event.addListener(GeoMarker, 'position_changed', function() {
-    map.setCenter(this.getPosition());
-    delete bounds;
-    bounds = new google.maps.LatLngBounds();
-    bounds.extend(clueLatlng);
-    bounds.union(this.getBounds());
+    if (!bounds) {
+      map.setCenter(this.getPosition());
+      bounds = new google.maps.LatLngBounds();
+      bounds.extend(clueLatlng);
+      bounds.union(this.getBounds());
 
-    map.fitBounds(bounds);
+      map.fitBounds(bounds);
+    }
 
     queryPosition();
   });
