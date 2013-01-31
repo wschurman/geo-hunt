@@ -1,5 +1,5 @@
 
-var THRESH = 0.005;
+var THRESH = 0.01;
 
 var map, GeoMarker, clueLatlng, clueMarker;
 
@@ -54,8 +54,10 @@ var initialize = function() {
   GeoMarker = new GeolocationMarker();
   GeoMarker.setCircleOptions({fillColor: '#808080'});
 
-  google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {
+  google.maps.event.addListener(GeoMarker, 'position_changed', function() {
     map.setCenter(this.getPosition());
+    delete bounds;
+    bounds = new google.maps.LatLngBounds();
     bounds.extend(clueLatlng);
     bounds.union(this.getBounds());
 
@@ -63,6 +65,8 @@ var initialize = function() {
 
     queryPosition();
   });
+
+  google.maps.event.addListener(GeoMarker, 'accuracy_changed', queryPosition);
 
   google.maps.event.addListener(GeoMarker, 'geolocation_error', function(e) {
     alert('There was an error obtaining your position. Message: ' + e.message);
