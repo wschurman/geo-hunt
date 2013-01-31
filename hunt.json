@@ -11,7 +11,7 @@
       "type" : 0,
       "lat" : 42.445571,
       "lng" : -76.489068,
-      "thresh" : 0.00005
+      "thresh" : 0.0002
     },
     {
       "title" : "last clue",
