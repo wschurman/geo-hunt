@@ -9,9 +9,9 @@
     {
       "title" : "Where is the end of the world?",
       "type" : 0,
-      "lat" : 40.445575,
-      "lng" : -76.489153,
-      "thresh" : 0.001
+      "lat" : 42.445343,
+      "lng" : -76.488962,
+      "thresh" : 0.00005
     },
     {
       "title" : "last clue",
