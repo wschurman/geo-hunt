@@ -68,9 +68,9 @@ var initialize = function() {
       bounds.union(this.getBounds());
 
       map.fitBounds(bounds);
-
-      n_changes += 1;
     }
+
+    n_changes += 1;
 
     queryPosition();
   });
